@@ -13,6 +13,7 @@ export interface EnvironmentInterface {
     locationOrigin: string;
     locationHost: string;
     apiUrl: string;
+    request_timeout_default_ms: number;
 }
 /**
  * Redefine environment to use proper settings
@@ -21,4 +22,5 @@ export const environment: EnvironmentInterface = {
     locationOrigin: locationOrigin,
     locationHost: locationHost,
     apiUrl: apiUrl,
+    request_timeout_default_ms: 60000,
 }

@@ -4,19 +4,23 @@
  * @author luchik
  */
 
-import { environment } from '@app-core/config/environment';
+import { environment } from 'src/core/config/environment';
 
-interface AppiEndpointsInterface {
+export type AppiEndpointsType = 'checkout.products.list';
+
+export interface AppiEndpointsInterface {
     name: string,
-    method: 'POST' | 'GET',
+    method: 'GET' | 'POST' | 'PUT' | 'HEAD' | 'DELETE',
     api_route: string,
 }
 
-export const AppiEndpointsConfig: Array<AppiEndpointsInterface> = [
-    // sso
-    {
-        name: 'current_user.sso_doitorg.get_external_user',
-        method: 'POST',
-        api_route: environment.apiUrl + '/api/v3/doit/claim_doitorg_account',
-    },
-];
+export const AppiEndpointsConfig: Map<AppiEndpointsType, AppiEndpointsInterface> = new Map<AppiEndpointsType, AppiEndpointsInterface>([
+    [
+        'checkout.products.list',
+        {
+            name: 'Get list of all products avaliable in checkout',
+            method: 'POST',
+            api_route: environment.apiUrl + '/json/products.json',
+        }
+    ],
+]);

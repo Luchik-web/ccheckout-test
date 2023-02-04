@@ -13,9 +13,15 @@
 import { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
 import { defineComponent, ref } from 'vue';
-import { environment } from '@app-core/config/environment';
+import { AppiEndpointsConfig } from '@app-core/config/api-endpoint.config';
+import { ProductsServiceInstance } from 'src/core/services/products/products.service';
 
-console.log(environment);
+console.log(AppiEndpointsConfig);
+
+ProductsServiceInstance.getProductList()
+    .then((results: any) => {
+        console.log(results);
+    });
 
 export default defineComponent({
   name: 'IndexPage',
