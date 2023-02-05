@@ -1,42 +1,21 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <q-layout view="hHh lpR fFf">
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+    <TopNavComponent />
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
+        v-model="drawerLeft"
+        :width="200"
+        :breakpoint="700"
+        bordered
+        class="bg-grey-3"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+    <ProductShortComponent
+        v-for="product in productList"
+        :key="product.id"
+        :product="product"
+    />
     </q-drawer>
 
     <q-page-container>
@@ -44,73 +23,49 @@
     </q-page-container>
   </q-layout>
 </template>
+<style lang="scss">
+$color: red;
+</style>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
+import { defineComponent, Ref, ref } from 'vue';
+// Domain
+import { ProductInterface } from 'src/core/domain/product.interface';
+// App Services
+import { ProductsServiceInstance } from 'src/core/services/products/products.service';
+// Components
+import TopNavComponent from 'components/TopNavComponent.vue';
+import ProductShortComponent from 'components/ProductShortComponent.vue';
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    // EssentialLink,
+    TopNavComponent,
+    ProductShortComponent,
   },
 
   setup () {
-    const leftDrawerOpen = ref(false)
+    const drawerLeft = ref(true);
+    let productList: Ref<ProductInterface[]> = ref([]);
 
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
+      drawerLeft,
       toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+        drawerLeft.value = !drawerLeft.value
+      },
+      ..._fetchDataProductList(productList),
     }
   }
 });
+
+function _fetchDataProductList(productList: Ref<ProductInterface[]>) {
+    ProductsServiceInstance.getProductList()
+        .then((results: ProductInterface[]) => {
+            productList.value = results;
+            console.log('productList', productList);
+        });
+    return { productList };
+}
 </script>

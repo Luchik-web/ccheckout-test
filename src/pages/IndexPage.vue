@@ -1,58 +1,47 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
+    <AppProductListComponent
+      title="Products"
       active
-      :todos="todos"
+      :productList="productList"
       :meta="meta"
-    ></example-component>
+    />
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-import { defineComponent, ref } from 'vue';
-import { AppiEndpointsConfig } from '@app-core/config/api-endpoint.config';
+import {  Meta } from 'components/models';
+import { defineComponent, Ref, ref } from 'vue';
+// Domain
+import { ProductInterface } from 'src/core/domain/product.interface';
+// App Services
 import { ProductsServiceInstance } from 'src/core/services/products/products.service';
-
-console.log(AppiEndpointsConfig);
-
-ProductsServiceInstance.getProductList()
-    .then((results: any) => {
-        console.log(results);
-    });
+// Components
+import AppProductListComponent from 'components/ProductListComponent.vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { ExampleComponent },
+  components: { AppProductListComponent },
   setup () {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ]);
+    let productList: Ref<ProductInterface[]> = ref([]);
+
     const meta = ref<Meta>({
       totalCount: 1200
     });
-    return { todos, meta };
-  }
+
+    return {
+        meta,
+        ..._fetchDataProductList(productList),
+    };
+  },
 });
+
+function _fetchDataProductList(productList: Ref<ProductInterface[]>) {
+    ProductsServiceInstance.getProductList()
+        .then((results: ProductInterface[]) => {
+            productList.value = results;
+            console.log('productList', productList);
+        });
+    return { productList };
+}
 </script>

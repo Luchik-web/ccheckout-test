@@ -9,19 +9,15 @@ import { ProductsServiceInterface } from './products.service.interface'
 class ProductsService implements ProductsServiceInterface {
     public ii = 0;
     /**
-     * Get list of accessories items
+     * Get list of Product items
      *
-     * @param sku
-     * @param cityId
-     * @param storeId
-     * @param options
+     * @param any options
+     * @returns Promise<ProductInterface[]>
      */
-    async getProductList(): Promise<ProductInterface> {
+    async getProductList(_options?: any): Promise<ProductInterface[]> {
         this.ii += 1;
         console.log(`this.ii = ${this.ii}`);
-        return await RequestAdapterInstance.request<any>(
-            'checkout.products.list'
-        )
+        return await RequestAdapterInstance.request<ProductInterface[]>('checkout.products.list')
     }
 }
 
