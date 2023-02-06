@@ -1,15 +1,42 @@
 <template>
   <div>
     <p>{{ title }}</p>
-    <ul>
-      <li v-for="product in productList" :key="product.id" @click="increment">
-        {{ product.id }} - {{ product.price }}
-      </li>
-    </ul>
-    <p>Count: {{ productsCount }} products</p>
-    <p>Clicks on products: {{ clickCount }}</p>
+    <q-item
+        v-for="product in productList" :key="product.id" @click="increment"
+        clickable
+        tag="div"
+    >
+        <q-item-section
+            v-if="product.icon"
+            avatar
+        >
+            <q-img
+                :src="product.icon"
+            />
+        </q-item-section>
+
+        <q-item-section>
+            <q-item-label>{{ product.name }}</q-item-label>
+            <div class="code">Код: {{ product.id }}</div>
+        </q-item-section>
+
+        <q-item-section>
+            <q-item-label caption>
+                <div v-if="product.discount > 0"><strike>{{ product.price }} ₴</strike></div>
+                {{ product.price * (1 - ((product.discount || 0) / 100)) }} ₴
+            </q-item-label>
+        </q-item-section>
+    </q-item>
+    <!-- <p>Count: {{ productsCount }} products</p>
+    <p>Clicks on products: {{ clickCount }}</p> -->
   </div>
 </template>
+
+<style lang="scss">
+.code {
+    font-size: 70%;
+}
+</style>
 
 <script lang="ts">
 import {
