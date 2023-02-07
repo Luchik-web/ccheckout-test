@@ -1,2 +1,4 @@
 // app global css in SCSS form
-@import './plugins/colors';
+@use './core';
+@import './layouts/normalize';
+@import './layouts/layout';

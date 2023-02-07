@@ -1,8 +1,8 @@
 <template>
-    <q-layout view="lhh LpR lff" class="bg-transparent">
+    <q-layout view="lhh LpR lff" class="chkt-layout bg-grey-3">
 
-        <q-header class="text-white bg-white">
-            <q-toolbar>
+        <q-header class="chkt-layout-topnav">
+            <q-toolbar >
                 <q-toolbar-title>
                     <q-icon :name="icon" />
                 </q-toolbar-title>
@@ -14,8 +14,7 @@
         <q-drawer
             side="right"
             v-model="drawerRight"
-            bordered
-            :width="200"
+            :width="320"
             :breakpoint="500"
             class="bg-grey-3"
         >
@@ -35,7 +34,7 @@
 
             <q-btn color="accent" no-caps label="Продовжити оформлення" />
 
-            <router-view />
+            <router-view/>
         </q-page-container>
     </q-layout>
 </template>
@@ -58,16 +57,14 @@
         }
     }
 }
-.text-white {
+.chkt-layout-topnav {
     color: #616161 !important;
-}
-.bg-white {
     background: #fff !important;
 }
-.bg-transparent {
-    background: transparent !important;
-}
 </style>
+<!-- .chkt-layout {
+    background: transparent !important;
+} -->
 
 <script lang="ts">
 import { defineComponent, Ref, ref } from 'vue';
