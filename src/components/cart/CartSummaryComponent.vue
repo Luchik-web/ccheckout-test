@@ -1,7 +1,7 @@
 <template>
 
     <section class="chckt-section chckt-section--mb">
-        <div class="checkout-title">
+        <div class="chkt-title">
             Разом:
         </div>
         <div data-component-init="totals">
@@ -51,43 +51,16 @@
             </div>
         </div>
     </section>
-
-
-    <!-- <q-item
-        clickable
-        tag="a"
-        target="_blank"
-        :href="link"
-    >
-    </q-item> -->
-    <!-- <q-item
-        clickable
-        tag="div"
-    >
-        <q-item-section
-            v-if="product.icon"
-            avatar
-        >
-            <q-img
-                :src="product.icon"
-            />
-        </q-item-section>
-
-        <q-item-section>
-            <q-item-label>{{ product.name }}</q-item-label>
-            <q-item-label caption>{{ product.price }}₴</q-item-label>
-        </q-item-section>
-    </q-item> -->
 </template>
 
 <style lang="scss">
-.checkout-title {
+.chkt-title {
     margin-bottom: 2rem;
     font-size: 2rem;
     font-weight: 500;
     color: #000;
 }
-.checkout-cart-products__error {
+.chkt-cart-products__error {
     background: #000;
     padding: 15px;
     border-radius: 8px;
@@ -105,42 +78,49 @@
 <script lang="ts">
 import {
 computed,
+  ComputedRef,
   defineComponent,
   PropType,
-  ref,
-  Ref,
-  toRef,
 } from 'vue';
 import { ProductInterface } from 'src/core/domain/product.interface';
 
 export default defineComponent({
-  name: 'AppCartSummaryComponent',
-  props: {
-    productList: {
-      type: Array as PropType<ProductInterface[]>,
-      default: () => null,
+    name: 'AppCartSummaryComponent',
+    props: {
+        productList: {
+        type: Array as PropType<ProductInterface[]>,
+        default: () => null,
+        },
     },
-  },
-  setup (props) {
-    return {
-        ...fetchDataProductListRelated(toRef(props, 'productList')),
-    };
-  },
-});
+    setup (props, { attrs, slots, emit, expose }) {
+        const productsCount: ComputedRef<number> = computed(() => {
+            return props.productList.length;
+        });
+        const productsPriceSum: ComputedRef<number> = computed(() => {
+            let productsPriceSum = 0;
+            props.productList.forEach((product: ProductInterface) => {
+                productsPriceSum += product.price;
+            });
+            console.log('productsPriceSum', productsPriceSum);
+            return productsPriceSum;
+        });
+        const productsPriceTotal: ComputedRef<number> = computed(() => {
+            let productsPriceTotal = 0;
+            props.productList.forEach((product: ProductInterface) => {
+                productsPriceTotal += product.price * (1 - (product.discount || 0) / 100);
+            });
+            console.log('productsPriceTotal', productsPriceTotal);
+            return productsPriceTotal;
+        });
 
-function fetchDataProductListRelated(productList: Ref<ProductInterface[]>) {
-    const productsCount = computed(() => productList.value.length);
-    let productsPriceSum = ref(0);
-    let productsPriceTotal = ref(0);
-    productList.value.forEach((product: ProductInterface) => {
-        productsPriceSum.value += product.price;
-        productsPriceTotal.value += product.price * (1 - (product.discount || 0) / 100);
-    });
-    console.log(productsPriceSum.value)
-    return {
-        productsCount,
-        productsPriceSum,
-        productsPriceTotal,
-    };
-}
+        return {
+            productsCount,
+            productsPriceSum,
+            productsPriceTotal,
+        };
+    },
+    mounted() {
+        console.log(this.productList) // 0
+    }
+});
 </script>
