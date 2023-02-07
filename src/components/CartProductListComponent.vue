@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="chckt-section chckt-section--mb">
     <p>{{ title }}</p>
     <q-item
         v-for="product in productList" :key="product.id" @click="increment"
@@ -27,9 +27,12 @@
             </q-item-label>
         </q-item-section>
     </q-item>
+
+    <q-btn color="primary" no-caps label="Змiнити" />
+    <q-btn color="accent" no-caps label="Продовжити оформлення" />
     <!-- <p>Count: {{ productsCount }} products</p>
     <p>Clicks on products: {{ clickCount }}</p> -->
-  </div>
+    </section>
 </template>
 
 <style lang="scss">
@@ -51,7 +54,7 @@ import { Meta } from './models';
 import { ProductInterface } from 'src/core/domain/product.interface';
 
 export default defineComponent({
-  name: 'AppProductListComponent',
+  name: 'AppCartProductListComponent',
   props: {
     title: {
       type: String,

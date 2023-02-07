@@ -1,5 +1,6 @@
 <template>
-    <div class="checkout-block totals-step _no-shipping" data-component-init="totals-step">
+
+    <section class="chckt-section chckt-section--mb">
         <div class="checkout-title">
             Разом:
         </div>
@@ -49,7 +50,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 
     <!-- <q-item
         clickable
@@ -79,14 +81,6 @@
 </template>
 
 <style lang="scss">
-.checkout-block {
-    position: relative;
-    margin-bottom: 2.4rem;
-    background-color: #fff;
-    border: 1px solid #fff;
-    border-radius: 0.8rem;
-    padding: 1rem;
-}
 .checkout-title {
     margin-bottom: 2rem;
     font-size: 2rem;

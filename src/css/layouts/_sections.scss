@@ -1,0 +1,25 @@
+@use '../core' as core;
+
+.chckt-section {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-color: core.$chktvar-section-bg-default;
+    border-radius: core.$chktvar-section-border-radius-default;
+    border: 1px solid #fff;
+
+    padding: 20px 19px;
+    @media screen and (max-width: $breakpoint-sm-max){
+        padding:2.4rem 1.6rem;
+    }
+    @media screen and (min-width: $breakpoint-md-min) and (max-width: $breakpoint-md-max){
+        padding:20px 19px;
+    }
+    @media screen and (min-width: $breakpoint-lg-max){
+        padding: 40px 39px;
+    }
+
+    &.chckt-section--mb {
+        margin-bottom: 2.4rem;
+    }
+}

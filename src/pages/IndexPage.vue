@@ -1,6 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <AppProductListComponent
+    <AppCustomerAddressComponent />
+    <AppCartProductListComponent
       title="Products"
       active
       :productList="productList"
@@ -17,11 +18,15 @@ import { ProductInterface } from 'src/core/domain/product.interface';
 // App Services
 import { ProductsServiceInstance } from 'src/core/services/products/products.service';
 // Components
-import AppProductListComponent from 'components/ProductListComponent.vue';
+import AppCustomerAddressComponent from 'components/CustomerAddressComponent.vue';
+import AppCartProductListComponent from 'components/CartProductListComponent.vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { AppProductListComponent },
+  components: {
+    AppCustomerAddressComponent,
+    AppCartProductListComponent,
+ },
   setup () {
     let productList: Ref<ProductInterface[]> = ref([]);
 
