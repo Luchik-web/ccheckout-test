@@ -1,5 +1,5 @@
 <template>
-    <div class=".chkt-topnav-info">
+    <div class="chkt-topnav-info">
         <div class="chkt-topnav-info__item">Безкоштовно по Україні:
             <a href="tel:0-800-303-505">0-800-303-505</a>
         </div>
