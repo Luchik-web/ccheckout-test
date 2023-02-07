@@ -68,7 +68,7 @@ import { ProductInterface } from 'src/core/domain/product.interface';
 import { ProductsServiceInstance } from 'src/core/services/products/products.service';
 // Components
 import AppTopNavComponent from 'components/TopNavComponent.vue';
-import AppCartSummaryComponent from 'components/CartSummaryComponent.vue';
+import AppCartSummaryComponent from 'components/cart/CartSummaryComponent.vue';
 
 export default defineComponent({
   name: 'MainLayout',

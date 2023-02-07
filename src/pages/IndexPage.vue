@@ -18,8 +18,8 @@ import { ProductInterface } from 'src/core/domain/product.interface';
 // App Services
 import { ProductsServiceInstance } from 'src/core/services/products/products.service';
 // Components
-import AppCustomerAddressComponent from 'components/CustomerAddressComponent.vue';
-import AppCartProductListComponent from 'components/CartProductListComponent.vue';
+import AppCustomerAddressComponent from 'components/customer/CustomerAddressComponent.vue';
+import AppCartProductListComponent from 'components/cart/CartProductListComponent.vue';
 
 export default defineComponent({
   name: 'IndexPage',
