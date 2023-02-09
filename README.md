@@ -1,35 +1,35 @@
----
+------------------------------------------------------------------------------------------------------------------------
 
--   [ABOUT](#ABOUT)
--   [INITIAL REQUIREMENTS](#INITIAL-REQUIREMENTS)
--   [NPM BASE COMMANDS](#NPM-BASE-COMMANDS)
-    -   [Install the dependencies]
-    -   [Start the app in development mode (hot-code reloading, error reporting, etc.)](#Start-the-app-in-development-mode-hot-code-reloading-error-reporting-etc)
-    -   [Start the app in development mode with .env-prod](#Start-the-app-in-development-mode-with-env-prod)
-    -   [Build app for production](#Build-app-for-production)
-    -   [Lint the files](#Lint-the-files)
-    -   [Format the files](#Format-the-files)
-    -   [Build the app for production](#Build-the-app-for-production)
-    -   [Run unit tests](#Run-unit-tests)
+* [ABOUT](#ABOUT)
+* [INITIAL REQUIREMENTS](#INITIAL-REQUIREMENTS)
+* [NPM BASE COMMANDS](#NPM-BASE-COMMANDS)
+    * [Install the dependencies]
+    * [Start the app in development mode (hot-code reloading, error reporting, etc.)](#Start-the-app-in-development-mode-hot-code-reloading-error-reporting-etc)
+    * [Start the app in development mode with .env-prod](#Start-the-app-in-development-mode-with-env-prod)
+    * [Build app for production](#Build-app-for-production)
+    * [Lint the files](#Lint-the-files)
+    * [Format the files](#Format-the-files)
+    * [Build the app for production](#Build-the-app-for-production)
+    * [Run unit tests](#Run-unit-tests)
 
----
+------------------------------------------------------------------------------------------------------------------------
 
 # ABOUT
 
 Selected technologies:
 
--   Quasar Framework
--   Vue
--   Vite
--   Vitest
+* Quasar Framework
+* Vue
+* Vite
+* Vitest
 
----
+------------------------------------------------------------------------------------------------------------------------
 
 # INITIAL REQUIREMENTS
 
 The App was set up with
-Node 19.0.1
-Npm 8.19.2
+Node    19.0.1
+Npm     8.19.2
 
 To work properly next dependencies should be installed globally
 
@@ -38,58 +38,53 @@ To work properly next dependencies should be installed globally
 npm install -g @quasar/cli
 # Install vitest
 npm install -g vitest
+
+
+npm i -g eslint
 ```
 
 To customize the configuration see [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
----
+------------------------------------------------------------------------------------------------------------------------
 
 # NPM BASE COMMANDS
 
 ## Install the dependencies
-
 ```bash
 npm install
 ```
 
 ## Start the app in development mode (hot-code reloading, error reporting, etc.)
-
 ```bash
 npm run dev
 ```
 
 ## Start the app in development mode with .env-prod
-
 ```bash
 npm run dev:prod
 ```
 
 ## Build app for production
-
 ```bash
 npm run build
 ```
 
 ## Lint the files
-
 ```bash
 npm run lint
 ```
 
 ## Format the files
-
 ```bash
 npm run format
 ```
 
 ## Build the app for production
-
 ```bash
 npm run build
 ```
 
 ## Run unit tests
-
 ```bash
 npm run test:unit
 ```
