@@ -33,7 +33,7 @@ yarn-error.log*
 *.sln
 
 # vscode
-.vscode
+.vscode/
 .history
 
 #tmp
