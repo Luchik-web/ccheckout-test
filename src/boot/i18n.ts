@@ -2,6 +2,7 @@ import { createI18n } from 'vue-i18n';
 import { boot } from 'quasar/wrappers';
 import messages from 'src/i18n';
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default boot(async ({ app }) => {
     // Create I18n instance
     const i18n = createI18n({

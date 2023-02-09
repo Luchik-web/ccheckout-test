@@ -1,10 +1,10 @@
 /**
  * Base Request adapter
  */
-import axios, { AxiosResponse, CancelToken, CancelTokenSource } from 'axios';
-import https from 'https';
+import axios, { /*AxiosResponse,*/ CancelToken, CancelTokenSource } from 'axios';
+// import https from 'https';
 import { AppiEndpointsType, AppiEndpointsConfig, AppiEndpointsInterface } from '../config/api-endpoint.config';
-import { environment } from '../config/environment';
+// import { environment } from '../config/environment';
 
 export type ApiOptions = {
     baseUrl: string,
@@ -46,7 +46,7 @@ class RequestAdapter {
         options?: ApiOptions,
         // requestType: RequestType = RequestType.Default
     ): Promise<T> {
-        const started = Date.now()
+        // const started = Date.now()
 
         let cancelToken: CancelToken | undefined;
 
@@ -65,9 +65,9 @@ class RequestAdapter {
             })
                 .then((response: any) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return resolve(response.data)
+                        return resolve(<T>response.data);
                     } else {
-                        throw response.data
+                        throw response.data;
                     }
                 })
                 .catch((e: Error) => {
@@ -86,7 +86,6 @@ class RequestAdapter {
         })
     }
 
-
     private __getHeaders(options?: ApiOptions): any {
         const headers: any = {
             'Content-Type': 'application/json',
@@ -102,7 +101,7 @@ class RequestAdapter {
         }
 
         for (const prop in options.headers) {
-            if (!options.headers.hasOwnProperty(prop) || !options.headers[prop]) {
+            if (!Object.getOwnPropertyDescriptor(options.headers, prop) || !options.headers[prop]) {
                 continue;
             }
             headers[prop] = options.headers[prop];

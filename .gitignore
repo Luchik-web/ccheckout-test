@@ -32,6 +32,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 
+# vscode
+.vscode
+.history
+
 #tmp
 .tmp
-.history
+

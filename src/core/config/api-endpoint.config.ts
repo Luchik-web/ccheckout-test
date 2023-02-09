@@ -14,7 +14,10 @@ export interface AppiEndpointsInterface {
     api_route: string,
 }
 
-export const AppiEndpointsConfig: Map<AppiEndpointsType, AppiEndpointsInterface> = new Map<AppiEndpointsType, AppiEndpointsInterface>([
+export const AppiEndpointsConfig: Map<
+    AppiEndpointsType,
+    AppiEndpointsInterface
+> = new Map<AppiEndpointsType, AppiEndpointsInterface>([
     [
         'checkout.products.list',
         {
