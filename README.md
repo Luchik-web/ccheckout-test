@@ -3,7 +3,7 @@
 * [ABOUT](#ABOUT)
 * [INITIAL REQUIREMENTS](#INITIAL-REQUIREMENTS)
 * [NPM BASE COMMANDS](#NPM-BASE-COMMANDS)
-    * [Install the dependencies]
+    * [Install the dependencies](#Install-the-dependencies)
     * [Start the app in development mode (hot-code reloading, error reporting, etc.)](#Start-the-app-in-development-mode-hot-code-reloading-error-reporting-etc)
     * [Start the app in development mode with .env-prod](#Start-the-app-in-development-mode-with-env-prod)
     * [Build app for production](#Build-app-for-production)
