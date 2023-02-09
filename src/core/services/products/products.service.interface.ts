@@ -10,5 +10,5 @@ export interface ProductsServiceInterface {
      * @param any options
      * @returns Promise<ProductInterface[]>
      */
-    getProductList(options?: any): Promise<ProductInterface[]>
+    getProductList(options?: any): Promise<ProductInterface[]>;
 }

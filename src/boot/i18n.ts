@@ -8,8 +8,8 @@ export default boot(async ({ app }) => {
     const i18n = createI18n({
         locale: 'ru',
         globalInjection: true,
-        messages
-    })
+        messages,
+    });
 
     // Tell app to use the I18n instance
     app.use(i18n);

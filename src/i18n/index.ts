@@ -1,7 +1,7 @@
-import ru from './ru'
-import uk from './uk'
+import ru from './ru';
+import uk from './uk';
 
 export default {
-    'ru': ru,
-    'uk': uk
-}
+    ru: ru,
+    uk: uk,
+};

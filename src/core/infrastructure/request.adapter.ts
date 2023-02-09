@@ -7,22 +7,22 @@ import { AppiEndpointsType, AppiEndpointsConfig, AppiEndpointsInterface } from '
 // import { environment } from '../config/environment';
 
 export type ApiOptions = {
-    baseUrl: string,
-    rayId: string,
-    sessionId: string,
-    trace?: Map<string, number>
+    baseUrl: string;
+    rayId: string;
+    sessionId: string;
+    trace?: Map<string, number>;
     headers?: {
-        [key: string]: string
-    }
-}
+        [key: string]: string;
+    };
+};
 
 export type RequestData = {
-    path: string,
-    method: string,
-    data?: any,
-    cancelToken: CancelTokenSource,
-    time: number
-}
+    path: string;
+    method: string;
+    data?: any;
+    cancelToken: CancelTokenSource;
+    time: number;
+};
 
 class RequestAdapter {
     private _requests: Array<RequestData> = [];
@@ -43,7 +43,7 @@ class RequestAdapter {
         method: 'GET' | 'POST' | 'PUT' | 'HEAD' | 'DELETE',
         url: string,
         data?: any,
-        options?: ApiOptions,
+        options?: ApiOptions
         // requestType: RequestType = RequestType.Default
     ): Promise<T> {
         // const started = Date.now()
@@ -61,7 +61,7 @@ class RequestAdapter {
                 // httpsAgent: new https.Agent({
                 //     rejectUnauthorized: false
                 // }),
-                cancelToken
+                cancelToken,
             })
                 .then((response: any) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -78,12 +78,12 @@ class RequestAdapter {
                         // logExternalError(method, url, started, null, e, options)
                     }
 
-                    return reject(e)
+                    return reject(e);
                 });
             // .finally(() => {
             //     singleRequest.requestCompleted(method, url, started)
             // })
-        })
+        });
     }
 
     private __getHeaders(options?: ApiOptions): any {

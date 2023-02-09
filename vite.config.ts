@@ -1,4 +1,4 @@
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 
 export default {
     resolve: {
@@ -6,10 +6,8 @@ export default {
             process: 'process/browser',
             stream: 'stream-browserify',
             zlib: 'browserify-zlib',
-            util: 'util'
-        }
+            util: 'util',
+        },
     },
-    plugins: [
-        vue(),
-    ]
-}
+    plugins: [vue()],
+};

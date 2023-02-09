@@ -4,8 +4,8 @@
  * @author luchik
  */
 
-const locationOrigin = ('undefined' === typeof window) ? '' : window.location.origin;
-const locationHost = ('undefined' === typeof window) ? '' : window.location.host;
+const locationOrigin = 'undefined' === typeof window ? '' : window.location.origin;
+const locationHost = 'undefined' === typeof window ? '' : window.location.host;
 
 const apiUrl = locationOrigin;
 
@@ -23,4 +23,4 @@ export const environment: EnvironmentInterface = {
     locationHost: locationHost,
     apiUrl: apiUrl,
     request_timeout_default_ms: 60000,
-}
+};

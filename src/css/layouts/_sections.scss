@@ -9,13 +9,13 @@
     border: 1px solid #fff;
 
     padding: 20px 19px;
-    @media screen and (max-width: $breakpoint-sm-max){
-        padding:2.4rem 1.6rem;
+    @media screen and (max-width: $breakpoint-sm-max) {
+        padding: 2.4rem 1.6rem;
     }
-    @media screen and (min-width: $breakpoint-md-min) and (max-width: $breakpoint-md-max){
-        padding:20px 19px;
+    @media screen and (min-width: $breakpoint-md-min) and (max-width: $breakpoint-md-max) {
+        padding: 20px 19px;
     }
-    @media screen and (min-width: $breakpoint-lg-max){
+    @media screen and (min-width: $breakpoint-lg-max) {
         padding: 40px 39px;
     }
 

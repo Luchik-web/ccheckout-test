@@ -1,7 +1,7 @@
 // import { Get } from '../../http'
-import { ProductInterface } from 'src/core/domain/product.interface'
-import { RequestAdapterInstance } from 'src/core/infrastructure/request.adapter'
-import { ProductsServiceInterface } from './products.service.interface'
+import { ProductInterface } from 'src/core/domain/product.interface';
+import { RequestAdapterInstance } from 'src/core/infrastructure/request.adapter';
+import { ProductsServiceInterface } from './products.service.interface';
 
 /**
  * https://confluence.comfy.ua/pages/viewpage.action?pageId=39911058
@@ -18,7 +18,7 @@ class ProductsService implements ProductsServiceInterface {
         this.ii += 1;
         console.log(`this.ii = ${this.ii}`);
 
-        return await RequestAdapterInstance.request<ProductInterface[]>('checkout.products.list')
+        return await RequestAdapterInstance.request<ProductInterface[]>('checkout.products.list');
     }
 }
 

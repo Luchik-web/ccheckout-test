@@ -1,4 +1,3 @@
-import ru from '../../core/i18n/ru'
+import ru from '../../core/i18n/ru';
 
-export default Object.assign(ru, {
-});
+export default Object.assign(ru, {});

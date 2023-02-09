@@ -4,4 +4,4 @@
 export default {
     free_in_ukraine: 'Бесплатно по Украине',
     free_in_kiev: 'Бесплатно по Киеву',
-}
+};

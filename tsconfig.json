@@ -1,10 +1,10 @@
 {
-  "extends": "@quasar/app-vite/tsconfig-preset",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "paths": {
-    "@app-assets/*": ["src/assets/*"],
-    "@app-core/*": ["src/core/*"]
-  }
+    "extends": "@quasar/app-vite/tsconfig-preset",
+    "compilerOptions": {
+        "baseUrl": "."
+    },
+    "paths": {
+        "@app-assets/*": ["src/assets/*"],
+        "@app-core/*": ["src/core/*"]
+    }
 }
