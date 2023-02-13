@@ -12,7 +12,7 @@ export interface CartItemInterface {
     productId: number;
     sku: string;
     type: 'simple' | string;
-    parentSku: string;
+    parentSku?: string;
     createdAt: Date;
     updatedAt: Date;
 

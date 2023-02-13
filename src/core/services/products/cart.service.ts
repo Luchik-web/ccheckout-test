@@ -18,7 +18,7 @@ class CartService implements CartServiceInterface {
         this.ii += 1
         console.log(`this.ii = ${this.ii}`)
 
-        return await RequestAdapterInstance.request<CartInterface>('checkout.products.list')
+        return await RequestAdapterInstance.request<CartInterface>('checkout.cart.get')
     }
 }
 

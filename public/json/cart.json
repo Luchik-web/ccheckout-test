@@ -5,26 +5,29 @@
             "id": 2222,
             "items": [
                 {
-                    "id": 2049518,
+                    "productId": 2049518,
+                    "sku": "2049518",
                     "price": 10999,
                     "currency": "₴",
-                    "discount": 12,
+                    "specialPrice": 9899,
                     "name": "Холодильник Vestfrost CX263WB",
                     "icon": "https://cdn.comfy.ua/media/catalog/product/cache/5/thumbnail/160x/9df78eab33525d08d6e5fb8d27136e95/_/2/_263_wb_1_.png"
                 },
                 {
-                    "id": 1763685,
+                    "productId": 1763685,
+                    "sku": "1763685",
                     "price": 22599,
                     "currency": "₴",
-                    "discount": 0,
+                    "specialPrice": null,
                     "name": "Холодильник Gorenje NRK6202EXL4",
                     "icon": "https://cdn.comfy.ua/media/catalog/product/cache/5/thumbnail/160x/9df78eab33525d08d6e5fb8d27136e95/0/8/08fd67137553a864749c11dade552917_168772_fp.png"
                 },
                 {
-                    "id": 1514553,
+                    "productId": 1514553,
+                    "sku": "1514553",
                     "price": 24299,
                     "currency": "₴",
-                    "discount": 0,
+                    "specialPrice": null,
                     "name": "Холодильник Bosch KGN39VL316",
                     "icon": "https://cdn.comfy.ua/media/catalog/product/cache/5/thumbnail/160x/9df78eab33525d08d6e5fb8d27136e95/b/o/bosch_kgn39vl316.png"
                 }

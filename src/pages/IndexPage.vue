@@ -3,61 +3,54 @@ import { Meta } from 'components/models';
 import { computed, defineComponent, Ref, ref } from 'vue';
 // import { useStore } from 'src/store';
 // Domain
-import { ProductInterface } from 'src/core/domain/product.interface';
+import { CartInterface } from 'src/core/domain/cart.interface';
 // App Services
 import { ProductsServiceInstance } from 'src/core/services/products/products.service';
+import { useCounterStore } from 'src/core/stores/cart/cart';
 // Components
 import AppCustomerAddressComponent from 'components/customer/CustomerAddressComponent.vue';
-import AppCartProductListComponent from 'components/cart/CartProductListComponent.vue';
+import AppCartItemListComponent from 'components/cart/CartItemListComponent.vue';
 
 export default defineComponent({
     name: 'IndexPage',
     components: {
         AppCustomerAddressComponent,
-        AppCartProductListComponent,
+        AppCartItemListComponent,
     },
     setup() {
-        // const $store = useStore()
-        // console.log('$store', $store)
-
-        const drawerState = computed(() => {
-            return { id: 1 }//$store.state.cart.cart
+        const store = useCounterStore();
+        const cart: CartInterface = computed(() => {
+            return store.cart;
         })
-        let productList: Ref<ProductInterface[]> = ref([])
 
+        setTimeout(()  => {
+            void store.init();
+        }, 2000)
         const meta = ref<Meta>({
             totalCount: 1200
         })
 
         return {
-            drawerState,
+            cart,
             meta,
-            ..._fetchDataProductList(productList),
         }
     },
 })
-
-function _fetchDataProductList(productList: Ref<ProductInterface[]>) {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    ProductsServiceInstance.getProductList().then(
-        (results: ProductInterface[]) => {
-            productList.value = results
-        }
-    )
-
-    return { productList }
-}
 </script>
 
 <template>
     <q-page class="row items-center justify-evenly">
-        {{ drawerState?.id }}
         <AppCustomerAddressComponent />
-        <AppCartProductListComponent
-            title="Products"
-            active
-            :product-list="productList"
-            :meta="meta"
-        />
+        <section
+            v-for="subcart in cart.subcarts"
+            :key="subcart.id"
+        >
+            <AppCartItemListComponent
+                title="Products"
+                active
+                :cart-item-list="subcart.items"
+                :meta="meta"
+            />
+        </section>
     </q-page>
 </template>

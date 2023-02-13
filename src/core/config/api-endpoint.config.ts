@@ -6,7 +6,8 @@
 
 import { environment } from 'src/core/config/environment';
 
-export type AppiEndpointsType = 'checkout.products.list';
+export type AppiEndpointsType = 'checkout.products.fetch'
+    | 'checkout.cart.get';
 
 export interface AppiEndpointsInterface {
     name: string;
@@ -19,11 +20,19 @@ export const AppiEndpointsConfig: Map<AppiEndpointsType, AppiEndpointsInterface>
     AppiEndpointsInterface
 >([
     [
-        'checkout.products.list',
+        'checkout.products.fetch',
         {
             name: 'Get list of all products avaliable in checkout',
             method: 'POST',
             api_route: environment.apiUrl + '/json/products.json',
+        },
+    ],
+    [
+        'checkout.cart.get',
+        {
+            name: 'Get Cart',
+            method: 'GET',
+            api_route: environment.apiUrl + '/json/cart.json',
         },
     ],
 ]);

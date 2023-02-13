@@ -18,7 +18,7 @@ class ProductsService implements ProductsServiceInterface {
         this.ii += 1;
         console.log(`this.ii = ${this.ii}`);
 
-        return await RequestAdapterInstance.request<ProductInterface[]>('checkout.products.list');
+        return await RequestAdapterInstance.request<ProductInterface[]>('checkout.products.fetch');
     }
 }
 

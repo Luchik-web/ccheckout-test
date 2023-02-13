@@ -1,23 +1,23 @@
 <script lang="ts">
 import { defineComponent, PropType, computed, ref, toRef, Ref } from 'vue';
-import { ProductInterface } from 'src/core/domain/product.interface';
+import { CartItemInterface } from 'src/core/domain/cart-item.interface';
 
 export default defineComponent({
-    name: 'AppCartProductListComponent',
+    name: 'AppCartItemListComponent',
     props: {
         title: {
             type: String,
             required: true,
         },
-        productList: {
-            type: Array as PropType<ProductInterface[]>,
+        cartItemList: {
+            type: Array as PropType<CartItemInterface[]>,
             default: () => [],
         },
     },
     setup(props) {
         return {
             ...useClickCount(),
-            ...useDisplayTodo(toRef(props, 'productList')),
+            ...useDisplayTodo(toRef(props, 'cartItemList')),
         };
     },
 });
@@ -33,10 +33,10 @@ function useClickCount() {
     return { clickCount, increment };
 }
 
-function useDisplayTodo(productList: Ref<ProductInterface[]>) {
-    const productsCount = computed(() => productList.value.length);
+function useDisplayTodo(cartItemList: Ref<CartItemInterface[]>) {
+    const cartItemsCount = computed(() => cartItemList.value.length);
 
-    return { productsCount };
+    return { cartItemsCount };
 }
 </script>
 
@@ -46,33 +46,36 @@ function useDisplayTodo(productList: Ref<ProductInterface[]>) {
             {{ title }}
         </p>
         <q-item
-            v-for="product in productList"
-            :key="product.id"
+            v-for="item in cartItemList"
+            :key="item.productId"
             tag="div"
             clickable
             @click="increment"
         >
-            <q-item-section v-if="product.icon" avatar>
-                <q-img :src="product.icon" />
+            <q-item-section v-if="item.icon" avatar>
+                <q-img :src="item.icon" />
             </q-item-section>
 
             <q-item-section>
                 <q-item-label>
-                    {{ product.name }}
+                    {{ item.name }}
                 </q-item-label>
                 <div class="code">
-                    Код: {{ product.id }}
+                    Код: {{ item.sku }}
                 </div>
             </q-item-section>
 
             <q-item-section>
                 <q-item-label caption>
-                    <div v-if="product.discount > 0">
+                    <div v-if="item.specialPrice">
                         <strike>
-                            {{ product.price }} ₴
+                            {{ item.price }} ₴
                         </strike>
+                        {{ item.specialPrice }} ₴
                     </div>
-                    {{ product.price * (1 - (product.discount || 0) / 100) }} ₴
+                    <div v-else>
+                        {{ item.price }} ₴
+                    </div>
                 </q-item-label>
             </q-item-section>
         </q-item>
@@ -87,8 +90,8 @@ function useDisplayTodo(productList: Ref<ProductInterface[]>) {
             no-caps
             label="Продовжити оформлення"
         />
-        <!-- <p>Count: {{ productsCount }} products</p>
-    <p>Clicks on products: {{ clickCount }}</p> -->
+        <!-- <p>Count: {{ cartItemsCount }} cartItems</p>
+    <p>Clicks on cartItems: {{ clickCount }}</p> -->
     </section>
 </template>
 
