@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
+import { CartItemInterface } from 'src/core/domain/cart-item.interface';
 import { CartInterface } from 'src/core/domain/cart.interface';
+import { SubcartInterface } from 'src/core/domain/subcart.interface';
 import { CartServiceInstance } from 'src/core/services/products/cart.service';
 
 export const useCounterStore = defineStore('counter', {
@@ -14,11 +16,66 @@ export const useCounterStore = defineStore('counter', {
     }),
 
     getters: {
-        // cart(state): CartInterface {
-        //     console.log('state', state);
+        productsCount(state): number {
+            console.log('state', state);
+            if (!state.cart) {
+                return 0;
+            }
+            if (!state.cart.subcarts || !state.cart.subcarts.length) {
+                return 0;
+            }
 
-        //     return state.cart;
-        // }
+            let summ: number = 0;
+            state.cart.subcarts.forEach((subcart: SubcartInterface) => {
+                summ += (subcart.items?.length || 0);
+            });
+
+            return summ;
+        },
+        productsPriceSum(state): number {
+            console.log('state', state);
+            if (!state.cart) {
+                return 0;
+            }
+            if (!state.cart.subcarts || !state.cart.subcarts.length) {
+                return 0;
+            }
+
+            let summ: number = 0;
+            state.cart.subcarts.forEach((subcart: SubcartInterface) => {
+                if (!subcart.items?.length) {
+                    return;
+                }
+
+                subcart.items.forEach((item: CartItemInterface) => {
+                    summ += item.price;
+                });
+            });
+
+            return summ;
+        },
+        productsPriceTotal(state): number {
+            console.log('state', state);
+            if (!state.cart) {
+                return 0;
+            }
+            if (!state.cart.subcarts || !state.cart.subcarts.length) {
+                return 0;
+            }
+
+            let summ: number = 0;
+            state.cart.subcarts.forEach((subcart: SubcartInterface) => {
+                if (!subcart.items?.length) {
+                    return;
+                }
+
+                subcart.items.forEach((item: CartItemInterface) => {
+                    summ += (item.specialPrice || item.price);
+                });
+            });
+
+            return summ;
+        },
     },
 
     actions: {

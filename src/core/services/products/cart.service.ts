@@ -12,7 +12,7 @@ class CartService implements CartServiceInterface {
      * Get list of Product items
      *
      * @param any options
-     * @returns Promise<ProductInterface[]>
+     * @returns Promise<CartInterface>
      */
     async getCart(): Promise<CartInterface> {
         this.ii += 1

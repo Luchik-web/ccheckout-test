@@ -173,5 +173,6 @@ module.exports = {
         ],
         'vue/no-unused-components': 'off',
         // 'rulesdir/no-unused-components': 'error',
+        '@typescript-eslint/no-inferrable-types': 'off',
     },
 };

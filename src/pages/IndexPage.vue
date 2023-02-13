@@ -1,11 +1,10 @@
 <script lang="ts">
 import { Meta } from 'components/models';
-import { computed, defineComponent, Ref, ref } from 'vue';
+import { computed, ComputedRef, defineComponent, ref } from 'vue';
 // import { useStore } from 'src/store';
 // Domain
 import { CartInterface } from 'src/core/domain/cart.interface';
 // App Services
-import { ProductsServiceInstance } from 'src/core/services/products/products.service';
 import { useCounterStore } from 'src/core/stores/cart/cart';
 // Components
 import AppCustomerAddressComponent from 'components/customer/CustomerAddressComponent.vue';
@@ -19,13 +18,8 @@ export default defineComponent({
     },
     setup() {
         const store = useCounterStore();
-        const cart: CartInterface = computed(() => {
-            return store.cart;
-        })
+        const cart: ComputedRef<CartInterface> = computed(() => store.cart);
 
-        setTimeout(()  => {
-            void store.init();
-        }, 2000)
         const meta = ref<Meta>({
             totalCount: 1200
         })

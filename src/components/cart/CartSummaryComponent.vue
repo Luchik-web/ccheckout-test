@@ -1,47 +1,22 @@
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, PropType } from 'vue';
-import { ProductInterface } from 'src/core/domain/product.interface';
+import { computed, ComputedRef, defineComponent } from 'vue';
+// Domain
+// App Services
+import { useCounterStore } from 'src/core/stores/cart/cart';
 
 export default defineComponent({
     name: 'AppCartSummaryComponent',
-    props: {
-        productList: {
-            type: Array as PropType<ProductInterface[]>,
-            default: () => null,
-        },
-    },
-    setup(props) {
-        const productsCount: ComputedRef<number> = computed(() => {
-            return props.productList.length;
-        });
-        const productsPriceSum: ComputedRef<number> = computed(() => {
-            let productsPriceSum = 0;
-            props.productList.forEach((product: ProductInterface) => {
-                productsPriceSum += product.price;
-            });
-            console.log('productsPriceSum', productsPriceSum);
-
-            return productsPriceSum;
-        });
-        const productsPriceTotal: ComputedRef<number> = computed(() => {
-            let productsPriceTotal = 0;
-            props.productList.forEach((product: ProductInterface) => {
-                productsPriceTotal +=
-                    product.price * (1 - (product.discount || 0) / 100);
-            });
-            console.log('productsPriceTotal', productsPriceTotal);
-
-            return productsPriceTotal;
-        });
+    setup() {
+        const store = useCounterStore();
+        const productsCount: ComputedRef<number> = computed(() => store.productsCount);
+        const productsPriceSum: ComputedRef<number> = computed(() => store.productsPriceSum);
+        const productsPriceTotal: ComputedRef<number> = computed(() => store.productsPriceTotal);
 
         return {
             productsCount,
             productsPriceSum,
             productsPriceTotal,
         };
-    },
-    mounted() {
-        console.log(this.productList); // 0
     },
 });
 </script>
@@ -102,12 +77,9 @@ export default defineComponent({
                             v-if="productsPriceTotal !== productsPriceSum"
                             class="ogg-price ogg-price-old"
                         >
-                            <span class="ogg-price__value">
-                                {{ productsPriceTotal }}
-                            </span>
-                            <span class="ogg-price__currency">
-                                ₴
-                            </span>
+                            <strike>
+                                {{ productsPriceSum }} ₴
+                            </strike>
                         </div>
 
                         <div class="ogg-price">

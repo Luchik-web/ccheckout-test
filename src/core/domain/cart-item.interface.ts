@@ -13,6 +13,7 @@ export interface CartItemInterface {
     sku: string;
     type: 'simple' | string;
     parentSku?: string;
+    bundleId?: string,
     createdAt: Date;
     updatedAt: Date;
 
@@ -30,5 +31,6 @@ export interface CartItemInterface {
     qty: number;
     price: number;
     specialPrice: number;
-}
 
+    [x: string]: any;
+}

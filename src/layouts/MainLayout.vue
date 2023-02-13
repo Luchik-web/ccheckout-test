@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, Ref, ref } from 'vue';
+import { defineComponent, ref, computed, ComputedRef } from 'vue';
 // Domain
-import { ProductInterface } from 'src/core/domain/product.interface';
+import { CartInterface } from 'src/core/domain/cart.interface';
 // App Services
-import { ProductsServiceInstance } from 'src/core/services/products/products.service';
+import { useCounterStore } from 'src/core/stores/cart/cart';
 // Components
 import AppTopNavComponent from 'components/TopNavComponent.vue';
 import AppCartSummaryComponent from 'components/cart/CartSummaryComponent.vue';
@@ -17,38 +17,32 @@ export default defineComponent({
     },
 
     setup() {
+        const store = useCounterStore();
+        const cart: ComputedRef<CartInterface> = computed(() => store.cart);
+
         const drawerLeft = ref(true);
         const drawerRight = ref(true);
         const icon = ref('img:./images/ui/logos/logo_main.svg');
-        let productList: Ref<ProductInterface[]> = ref([]);
+
+        setTimeout(()  => {
+            void store.init();
+        }, 2000)
 
         return {
             icon,
             drawerLeft,
             drawerRight,
+            cart,
             toggleLeftDrawer() {
                 drawerLeft.value = !drawerLeft.value;
             },
             toggleRightDrawer() {
                 drawerRight.value = !drawerRight.value;
             },
-            ..._fetchDataProductList(productList),
         };
     },
 });
 
-function _fetchDataProductList(productList: Ref<ProductInterface[]>) {
-    ProductsServiceInstance.getProductList()
-        .then((results: ProductInterface[]) => {
-            productList.value = results;
-            console.log('productList', productList);
-        })
-        .catch((e) => {
-            throw e;
-        });
-
-    return { productList };
-}
 </script>
 
 <template>
@@ -72,7 +66,7 @@ function _fetchDataProductList(productList: Ref<ProductInterface[]>) {
         >
             <q-scroll-area class="fit">
                 <div class="q-pa-sm">
-                    <AppCartSummaryComponent :product-list="productList" />
+                    <AppCartSummaryComponent :cart="cart" />
                 </div>
             </q-scroll-area>
         </q-drawer>
