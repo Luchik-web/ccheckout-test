@@ -6,5 +6,10 @@
   "singleQuote": true,
   "endOfLine": "auto",
   "bracketSameLine": true,
-  "htmlWhitespaceSensitivity": "strict"
+  "htmlWhitespaceSensitivity": "strict",
+  "vueIndentScriptAndStyle": false,
+  "embeddedLanguageFormatting": "auto",
+  "singleAttributePerLine": true,
+  "proseWrap": "preserve",
+  "parser": "vue"
 }

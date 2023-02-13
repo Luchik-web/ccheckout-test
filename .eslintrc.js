@@ -75,27 +75,7 @@ module.exports = {
 
     // add your custom rules here
     rules: {
-        // 'prefer-promise-reject-errors': 'off',
-
-        // quotes: ['warn', 'single', { avoidEscape: true }],
-
-        // // this rule, if on, would require explicit return type on the `render` function
-        // '@typescript-eslint/explicit-function-return-type': 'off',
-
-        // // in plain CommonJS modules, you can't use `import foo = require('foo')` to pass this rule, so it has to be disabled
-        // '@typescript-eslint/no-var-requires': 'off',
-
-        // // The core 'no-unused-vars' rules (in the eslint:recommended ruleset)
-        // // does not work with type definitions
-        // 'no-unused-vars': 'off',
-
-        // // allow debugger during development only
-        // 'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-
-        // '@typescript-eslint/no-explicity-any': 'off',
-        // '@typescript-elint/explicit-function-return-type': 'off',
         'prefer-promise-reject-errors': 'off',
-        // indent: ['warn', 4],
 
         // TypeScript
         '@typescript-eslint/explicit-function-return-type': 'off',

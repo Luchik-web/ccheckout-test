@@ -1,6 +1,6 @@
-// import { Get } from '../../http'
+// import { Get } from '../../http';
 import { ProductInterface } from 'src/core/domain/product.interface';
-import { RequestAdapterInstance } from 'src/core/infrastructure/request.adapter';
+import { RequestAdapterInstance } from 'src/core/infrastructure/request/request.adapter';
 import { ProductsServiceInterface } from './products.service.interface';
 
 /**

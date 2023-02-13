@@ -11,6 +11,7 @@
     * [Format the files](#Format-the-files)
     * [Build the app for production](#Build-the-app-for-production)
     * [Run unit tests](#Run-unit-tests)
+    * [Add new store](#Add-new-store)
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -87,6 +88,11 @@ npm run build
 ## Run unit tests
 ```bash
 npm run test:unit
+```
+
+## Add new store
+```bash
+quasar new store cart --format ts
 ```
 
 <!-- ------------------------------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
  */
 import axios, { /*AxiosResponse,*/ CancelToken, CancelTokenSource } from 'axios';
 // import https from 'https';
-import { AppiEndpointsType, AppiEndpointsConfig, AppiEndpointsInterface } from '../config/api-endpoint.config';
+import { AppiEndpointsType, AppiEndpointsConfig, AppiEndpointsInterface } from '../../config/api-endpoint.config';
 // import { environment } from '../config/environment';
 
 export type ApiOptions = {
@@ -25,18 +25,18 @@ export type RequestData = {
 };
 
 class RequestAdapter {
-    private _requests: Array<RequestData> = [];
+    private _requests: Array<RequestData> = []
 
     public request<T>(apiEndpointAlias: AppiEndpointsType): Promise<T> {
         if (!AppiEndpointsConfig.has(apiEndpointAlias)) {
-            throw new Error('Config not found');
+            throw new Error('Config not found')
         }
-        const config: AppiEndpointsInterface | undefined = AppiEndpointsConfig.get(apiEndpointAlias);
+        const config: AppiEndpointsInterface | undefined = AppiEndpointsConfig.get(apiEndpointAlias)
         if (!config) {
-            throw new Error('Config not found');
+            throw new Error('Config not found')
         }
 
-        return this._request<T>(config.method, config.api_route);
+        return this._request<T>(config.method, config.api_route)
     }
 
     private _request<T>(
@@ -48,7 +48,7 @@ class RequestAdapter {
     ): Promise<T> {
         // const started = Date.now()
 
-        let cancelToken: CancelToken | undefined;
+        let cancelToken: CancelToken | undefined
 
         return new Promise((resolve, reject) => {
             axios({
@@ -65,50 +65,50 @@ class RequestAdapter {
             })
                 .then((response: any) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return resolve(<T>response.data);
+                        return resolve(<T>response.data)
                     } else {
-                        throw response.data;
+                        throw response.data
                     }
                 })
                 .catch((e: Error) => {
                     if (axios.isCancel(e)) {
-                        console.warn('Request canceled', e.message);
+                        console.warn('Request canceled', e.message)
                     } else {
-                        console.warn('Request failed');
+                        console.warn('Request failed')
                         // logExternalError(method, url, started, null, e, options)
                     }
 
-                    return reject(e);
-                });
+                    return reject(e)
+                })
             // .finally(() => {
             //     singleRequest.requestCompleted(method, url, started)
             // })
-        });
+        })
     }
 
     private __getHeaders(options?: ApiOptions): any {
         const headers: any = {
             'Content-Type': 'application/json',
-        };
+        }
 
         if (options) {
-            headers['X-Ray-Id'] = options.rayId;
-            headers['X-Session-Id'] = options.sessionId;
+            headers['X-Ray-Id'] = options.rayId
+            headers['X-Session-Id'] = options.sessionId
         }
 
         if (!options?.headers) {
-            return headers;
+            return headers
         }
 
         for (const prop in options.headers) {
             if (!Object.getOwnPropertyDescriptor(options.headers, prop) || !options.headers[prop]) {
-                continue;
+                continue
             }
-            headers[prop] = options.headers[prop];
+            headers[prop] = options.headers[prop]
         }
 
-        return headers;
+        return headers
     }
 }
 
-export const RequestAdapterInstance = new RequestAdapter();
+export const RequestAdapterInstance = new RequestAdapter()
