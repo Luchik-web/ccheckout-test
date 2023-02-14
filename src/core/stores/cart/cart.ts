@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
-import { CartItemInterface } from 'src/core/domain/cart-item.interface';
-import { CartInterface } from 'src/core/domain/cart.interface';
-import { SubcartInterface } from 'src/core/domain/subcart.interface';
+import { CartItemInterface } from '@comfy/core/src/core/domain/cart-item.interface';
+import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
+import { SubcartInterface } from '@comfy/core/src/core/domain/subcart.interface';
 import { CartServiceInstance } from 'src/core/services/products/cart.service';
 
 export const useCounterStore = defineStore('counter', {

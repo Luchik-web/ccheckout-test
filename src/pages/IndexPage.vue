@@ -3,7 +3,7 @@ import { Meta } from 'components/models';
 import { computed, ComputedRef, defineComponent, ref } from 'vue';
 // import { useStore } from 'src/store';
 // Domain
-import { CartInterface } from 'src/core/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
 // App Services
 import { useCounterStore } from 'src/core/stores/cart/cart';
 // Components

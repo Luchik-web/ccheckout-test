@@ -1,4 +1,4 @@
-import { CartInterface } from 'src/core/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
 
 /**
  * Product Service Interface

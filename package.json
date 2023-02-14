@@ -3,7 +3,11 @@
     "version": "0.0.1",
     "description": "Comfy Checkout",
     "productName": "Checkout",
-    "author": "luchinkina.olga@gmail.com",
+    "author": {
+        "name": "Luchinkina Olga",
+        "email": "LuchinkinaOI@comfy.ua",
+        "url": "https://github.com/Luchik-web/comfy-core"
+    },
     "private": true,
     "scripts": {
         "dev": "quasar dev",
@@ -16,6 +20,7 @@
         "test:unit:ci": "vitest run"
     },
     "dependencies": {
+        "@comfy/core": "github:Luchik-web/comfy-core#main",
         "@quasar/extras": "^1.0.0",
         "axios": "^1.3.2",
         "pinia": "^2.0.30",

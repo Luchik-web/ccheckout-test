@@ -4,7 +4,7 @@
         "baseUrl": "."
     },
     "paths": {
-        "@app-assets/*": ["src/assets/*"],
-        "@app-core/*": ["src/core/*"]
+      "@app-assets/*": ["src/assets/*"],
+      "@app-core/*": ["src/core/*"]
     }
 }

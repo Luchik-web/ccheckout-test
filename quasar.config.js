@@ -14,6 +14,7 @@ const path = require('path');
 
 module.exports = configure(function (/* ctx */) {
     return {
+        supportTS: true,
         eslint: {
             // fix: true,
             // include = [],
@@ -50,9 +51,11 @@ module.exports = configure(function (/* ctx */) {
 
         // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
         build: {
-            alias: {
-                '@app-core': path.join(__dirname, './src/core'),
-                '@app-assets': path.join(__dirname, './src/assets'),
+            extendViteConf (viteConf, { isServer, isClient }) {
+                Object.assign(viteConf.resolve.alias, {
+                    '@app-core': path.join(__dirname, './src/core'),
+                    'app-assets': path.join(__dirname, './src/assets'),
+                })
             },
             target: {
                 browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, ComputedRef } from 'vue';
 // Domain
-import { CartInterface } from 'src/core/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
 // App Services
 import { useCounterStore } from 'src/core/stores/cart/cart';
 // Components
