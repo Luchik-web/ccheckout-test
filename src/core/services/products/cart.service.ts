@@ -1,7 +1,7 @@
 // import { Get } from '../../http';
-import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/domain/cart.interface';
 import { RequestAdapterInstance } from 'src/core/infrastructure/request/request.adapter';
-import { CartServiceInterface } from '@comfy/core/src/core/services/cart.service.interface';
+import { CartServiceInterface } from '@comfy/core/src/services/cart.service.interface';
 
 /**
  * https://confluence.comfy.ua/pages/viewpage.action?pageId=39911058

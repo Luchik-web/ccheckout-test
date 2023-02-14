@@ -2,12 +2,12 @@
 import { computed, ComputedRef, defineComponent } from 'vue';
 // Domain
 // App Services
-import { useCounterStore } from 'src/core/stores/cart/cart';
+import { useCartStore } from '@comfy/core/src/stores/cart/cart';
 
 export default defineComponent({
     name: 'AppCartSummaryComponent',
     setup() {
-        const store = useCounterStore();
+        const store = useCartStore();
         const productsCount: ComputedRef<number> = computed(() => store.productsCount);
         const productsPriceSum: ComputedRef<number> = computed(() => store.productsPriceSum);
         const productsPriceTotal: ComputedRef<number> = computed(() => store.productsPriceTotal);

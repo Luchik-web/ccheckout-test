@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, ref, computed, ComputedRef } from 'vue';
 // Domain
-import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/domain/cart.interface';
 // App Services
-import { useCounterStore } from 'src/core/stores/cart/cart';
+import { useCartStore } from '@comfy/core/src/stores/cart/cart';
 // Components
 import AppTopNavComponent from 'components/TopNavComponent.vue';
 import AppCartSummaryComponent from 'components/cart/CartSummaryComponent.vue';
@@ -17,7 +17,7 @@ export default defineComponent({
     },
 
     setup() {
-        const store = useCounterStore();
+        const store = useCartStore();
         const cart: ComputedRef<CartInterface> = computed(() => store.cart);
 
         const drawerLeft = ref(true);

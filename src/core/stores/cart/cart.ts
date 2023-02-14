@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
-import { CartItemInterface } from '@comfy/core/src/core/domain/cart-item.interface';
-import { CartInterface } from '@comfy/core/src/core/domain/cart.interface';
-import { SubcartInterface } from '@comfy/core/src/core/domain/subcart.interface';
+import { CartItemInterface } from '@comfy/core/src/domain/cart-item.interface';
+import { CartInterface } from '@comfy/core/src/domain/cart.interface';
+import { SubcartInterface } from '@comfy/core/src/domain/subcart.interface';
 import { CartServiceInstance } from 'src/core/services/products/cart.service';
 
-export const useCounterStore = defineStore('counter', {
+export const useCartStore = defineStore('counter', {
     state: (): {
         counter: number,
         cart: CartInterface,
