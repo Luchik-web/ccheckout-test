@@ -1,3 +1,4 @@
+// import 'src/core/stores/index';
 import { store } from 'quasar/wrappers';
 import { createPinia } from 'pinia';
 import { Router } from 'vue-router';

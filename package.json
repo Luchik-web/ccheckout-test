@@ -10,6 +10,7 @@
     },
     "private": true,
     "scripts": {
+        "ucore": "npm install @comfy/core",
         "dev": "quasar dev",
         "dev:prod": "quasar dev -m ssr -env=.env-prod",
         "build": "quasar build",

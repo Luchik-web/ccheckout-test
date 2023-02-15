@@ -2,7 +2,7 @@
 import { computed, ComputedRef, defineComponent } from 'vue';
 // Domain
 // App Services
-import { useCartStore } from '@comfy/core/src/stores/cart/cart';
+import { useCartStore } from 'src/core/stores/cart/cart';
 
 export default defineComponent({
     name: 'AppCartSummaryComponent',

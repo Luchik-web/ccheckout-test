@@ -4,6 +4,7 @@
 * [INITIAL REQUIREMENTS](#INITIAL-REQUIREMENTS)
 * [NPM BASE COMMANDS](#NPM-BASE-COMMANDS)
     * [Install the dependencies](#Install-the-dependencies)
+    * [Update comfy core](#Update-comfy-core)
     * [Start the app in development mode (hot-code reloading, error reporting, etc.)](#Start-the-app-in-development-mode-hot-code-reloading-error-reporting-etc)
     * [Start the app in development mode with .env-prod](#Start-the-app-in-development-mode-with-env-prod)
     * [Build app for production](#Build-app-for-production)
@@ -55,6 +56,11 @@ To customize the configuration see [Configuring quasar.conf.js](https://quasar.d
 npm install
 ```
 
+## Update comfy core
+```bash
+npm run ucore
+```
+
 ## Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 npm run dev
@@ -78,11 +84,6 @@ npm run lint
 ## Format the files
 ```bash
 npm run format
-```
-
-## Build the app for production
-```bash
-npm run build
 ```
 
 ## Run unit tests

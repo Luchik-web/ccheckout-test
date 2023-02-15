@@ -1,26 +1,16 @@
 /**
  * @packageDocumentation
- * @module CoreModule.config
+ * @module Checkout.Config
  * @author luchik
  */
+import { environment as _environment } from '@comfy/core/src/config/environment';
+import { EnvironmentInterface as CoreEnvironmentInterface } from '@comfy/core/src/config/environment';
 
-const locationOrigin = 'undefined' === typeof window ? '' : window.location.origin;
-const locationHost = 'undefined' === typeof window ? '' : window.location.host;
-
-const apiUrl = locationOrigin;
-
-export interface EnvironmentInterface {
-    locationOrigin: string;
-    locationHost: string;
+export interface EnvironmentInterface extends CoreEnvironmentInterface {
     apiUrl: string;
-    request_timeout_default_ms: number;
 }
 /**
  * Redefine environment to use proper settings
  */
-export const environment: EnvironmentInterface = {
-    locationOrigin: locationOrigin,
-    locationHost: locationHost,
-    apiUrl: apiUrl,
-    request_timeout_default_ms: 60000,
+export const environment: EnvironmentInterface = Object.assign(_environment, {
 };

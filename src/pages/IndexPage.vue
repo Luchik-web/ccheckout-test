@@ -3,9 +3,9 @@ import { Meta } from 'components/models';
 import { computed, ComputedRef, defineComponent, ref } from 'vue';
 // import { useStore } from 'src/store';
 // Domain
-import { CartInterface } from '@comfy/core/src/domain/cart.interface';
+import { CartInterface } from '@comfy/core/src/domain/cart/cart.interface';
 // App Services
-import { useCartStore } from '@comfy/core/src/stores/cart/cart';
+import { useCartStore } from 'src/core/stores/cart/cart';
 // Components
 import AppCustomerAddressComponent from 'components/customer/CustomerAddressComponent.vue';
 import AppCartItemListComponent from 'components/cart/CartItemListComponent.vue';

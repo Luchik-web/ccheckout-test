@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType, computed, ref, toRef, Ref } from 'vue';
-import { CartItemInterface } from '@comfy/core/src/domain/cart-item.interface';
+import { CartItemInterface } from '@comfy/core/src/domain/cart/cart-item.interface';
 
 export default defineComponent({
     name: 'AppCartItemListComponent',
