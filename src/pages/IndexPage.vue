@@ -35,16 +35,13 @@ export default defineComponent({
 <template>
     <q-page class="row items-center justify-evenly">
         <AppCustomerAddressComponent />
-        <section
+        <AppCartItemListComponent
             v-for="subcart in cart.subcarts"
             :key="subcart.id"
-        >
-            <AppCartItemListComponent
-                title="Products"
-                active
-                :cart-item-list="subcart.items"
-                :meta="meta"
-            />
-        </section>
+            :cart-item-list="subcart.items"
+            :meta="meta"
+            title="Products"
+            active
+        />
     </q-page>
 </template>
